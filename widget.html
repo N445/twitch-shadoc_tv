@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+
+
 <style>
     :root {
-        --dispay-cover: block;
+        --dispay-cover: none;
         --theme-primary: #d2601a;
-        --theme-dark: #1d3c45;
-        --theme-space-1: 8px;
-        --theme-radius: 0;
+        --theme-primary-light: #f39b60;
+        --theme-dark: #1D3C45;
+        --theme-white: #FFF1E1;
+        --theme-radius: 6px;
         --theme-shadow: 0 0 15px rgba(0, 0, 0, .3);
     }
 
@@ -19,18 +26,19 @@
     }
 
     .widget {
-        padding: var(--theme-space-1);
+        padding: 8px 20px;
         background-color: rgba(29, 60, 69, .5);
         backdrop-filter: blur(20px);
         border-radius: var(--theme-radius);
         border-color: rgb(22, 22, 22);
-        height: 120px;
+        min-height: 80px;
         box-shadow: var(--theme-shadow);
         margin: 8px;
         position: relative;
         z-index: -2;
         display: flex;
         align-items: center;
+        /*width: 400px;*/
     }
 
     #cover {
@@ -38,11 +46,17 @@
         transition: background-image 0.8s ease-in-out;
         aspect-ratio: 1;
         background-size: cover;
-        border-radius: calc(var(--theme-radius) - var(--theme-space-1));
+        border-radius: var(--theme-radius);
         box-shadow: 0 0 4px 4px rgba(0, 0, 0, .5) inset;
         background-position: center;
         background-repeat: no-repeat;
         display: var(--dispay-cover);
+    }
+
+    .icon{
+        width: 50px;
+        fill:var(--theme-white);
+        margin-right: 20px;
     }
 
     .image-box {
@@ -61,8 +75,6 @@
 
     .info {
         overflow: hidden;
-        padding-left: 10px;
-        padding-right: 10px;
         width: 100%;
     }
 
@@ -73,10 +85,11 @@
     }
 
     p {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: white;
-        margin: 0px;
+        font-family: "Passion One",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-transform: uppercase;
+        margin: 0;
         padding-bottom: 2px;
+        color: var(--theme-white);
     }
 
     #artist {
@@ -85,42 +98,51 @@
 
     #progressbar,
     #progress {
-        background-color: gray;
+        /*background-color: gray;*/
         height: 6px;
         width: 100%;
-        margin-top: 5px;
-        border-radius: 2px;
+        /*margin-top: 5px;*/
+        /*border-radius: 2px;*/
         transition: background-color 0.8s ease-in-out;
     }
 
     #progressbar {
         position: relative;
-        margin-bottom: 4px;
+        /*margin-bottom: 4px;*/
+        border-radius: 0 0 var(--theme-radius) var(--theme-radius);
+        overflow: hidden;
     }
 
     #progress {
         background-color: var(--theme-primary);
-        box-shadow: 0 0 5px var(--theme-primary);
+        background-image: linear-gradient(to right,var(--theme-primary),var(--theme-primary-light));
+        /*box-shadow: 0 0 5px var(--theme-primary);*/
         width: 50%;
         position: absolute;
-        top: -80%;
+        top: 0;
     }
 
     #timeline {
-        display: grid;
-        grid-template-columns: 1fr 20fr 1fr;
-        align-items: center;
-        place-items: center;
+        /*display: grid;*/
+        /*grid-template-columns: 1fr 20fr 1fr;*/
+        /*align-items: center;*/
+        /*place-items: center;*/
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
     }
 
     #length {
         margin-left: 5px;
         font-size: medium;
+        display: none;
     }
 
     #time-passed {
         margin-right: 5px;
         font-size: medium;
+        display: none;
     }
 </style>
 
@@ -128,6 +150,12 @@
 <div class="widget">
     <div class="image-box">
         <div id="cover"></div>
+    </div>
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/>
+        </svg>
     </div>
     <div class="info">
         <p id="title">Mon super titre de la musique</p>
